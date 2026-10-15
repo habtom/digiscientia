@@ -20,9 +20,12 @@ pymongo (MongoDB Atlas), Streamlit, schedule, NCBI E-utilities.
 
 ## Setup
 Create `src/common/config.json` with `MONGO_DB_URI`, `EMAIL_SENDER` and `EMAIL_PASSWORD`
-(not committed). `environment.yml` covers the notebook environment; the apps also need
-`pip install streamlit streamlit-aggrid torch transformers pymongo schedule`.
-Run `streamlit run src/portal/app.py` and `python src/bot/bot.py`.
+(not committed). The curated senior list (`data/processed/seniors_list.csv`, column `Name`)
+is not included either. `environment.yml` covers the notebook environment; the apps also need
+`pip install streamlit streamlit-aggrid pandas numpy torch transformers pymongo schedule nltk`.
+Run the portal from `src/`: `cd src && PYTHONPATH=. streamlit run portal/app.py`.
+The bot (`src/bot/bot.py`) passes the MongoDB URI to `Database`, whose constructor in
+`src/common/database.py` reads it from `config.json` itself; align the two before running the bot.
 
 ## Status
 Bootcamp prototype (May 2024), migrated from the bootcamp GitLab; not maintained.
